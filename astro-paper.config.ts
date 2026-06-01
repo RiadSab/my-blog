@@ -2,11 +2,11 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://sabti.dev/",
+    url: "https://blog.sabti.dev/",
     title: "SABTI Riad",
     description: "Backend & systems engineering — mostly Linux internals, the parts under the syscall.",
     author: "SABTI RIad",
-    profile: "https://sabti.dev/",
+    profile: "https://blog.sabti.dev/",
     ogImage: "default-og.jpg",
     lang: "en",
     timezone: "Africa/Casablanca",
@@ -30,8 +30,8 @@ export default defineAstroPaperConfig({
   },
   socials: [
     { name: "github",   url: "https://github.com/RiadSab" },
-    { name: "x",        url: "https://x.com/username" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
+    { name: "x",        url: "https://x.com/riad_sab" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/sabti-riad/" },
     { name: "mail",     url: "mailto:sabtiriad@gmail.com" },
   ],
   // shareLinks: [
