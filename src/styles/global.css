@@ -1,10 +1,49 @@
 @import "tailwindcss";
 @import "./theme.css";
 @import "./typography.css";
+@font-face {
+  font-family: 'Caudex';
+  src: url('/Caudex/Caudex-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('/Caudex/Caudex-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('/Caudex/Caudex-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Caudex';
+  src: url('/Caudex/Caudex-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/Bricolage_Grotesque/BricolageGrotesque-Variable.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-title;
+  }
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;

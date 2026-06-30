@@ -10,7 +10,7 @@
     h3,
     h4,
     th {
-      @apply text-foreground mb-3;
+      @apply text-foreground font-title mb-3;
     }
 
     h3 {

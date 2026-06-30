@@ -7,7 +7,10 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --font-app: var(--font-google-sans-code);
+  --font-body: "Bricolage Grotesque", sans-serif;
+  --font-title: "Caudex", serif;
+  --font-mono: var(--font-google-sans-code), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-app: var(--font-body);
 }
 
 /* Light theme values */
