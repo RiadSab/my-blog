@@ -18,9 +18,9 @@ This discussion took software engineering as its main subject, since it aligns w
 
 ## The spark
 
-In my sceptical phase of the month, I had a thought about the excessive use of AI in coding, engineering and learning... and I questioned myself, does AI help us learn faster or am I delusional ? and does it hand us some false confidence along the way?
+In my sceptical phase of the month, I had a thought about the excessive use of AI in coding, engineering and learning... and I questioned myself, does AI help us learn faster or am I delusional? and does it hand us some false confidence along the way?
 
-## studying a new python library
+## Studying a new python library
 ### Intro
 There is a study made on two groups: one was permitted to use AI, the other was not. Both groups had to learn a new python library through a task, then complete a quiz at the end.
 You can read it all [here](https://arxiv.org/abs/2601.20245).
@@ -79,16 +79,15 @@ itself is not wrong), you hit an infinite loop: if you should review the code, y
 how would you assist AI now ?
 
 
-## Should we adapt
-So in my case, I thought about getting the best of both sides, coding with AI and without it. I do not feel comfortable about losing
-my ability to write, and I do not want to get left behind in the current state of software engineering. I should be able to use AI-assisted coding
-to get things done and "to adapt", while preserving my thing.
+## Take a breath
+I don't think the learning phase can be clean, errors are the standard. Look around you from time to time, and you might spot a pattern. Don't be fooled by your own mind.
 
 AI gives you wings, be careful not to hit the roof.
 
 
-This writing does not state or confirm anything; it is a self-discussion and can be 1% or 100% wrong.
-The studies mentioned above have many limitations, check them for more details, but at least they give a starting point for reflection.
 
+
+This writing does not state or confirm anything, it is a self-discussion and can be 1% or 100% wrong.
+The studies mentioned above have many limitations, check them for more details, but at least they give a starting point for reflection.
 
 You are welcome to strike anything said here and express your idea.
