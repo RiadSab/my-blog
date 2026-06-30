@@ -1,9 +1,9 @@
 ---
 title: "About"
-description: "Backend engineer and competitive programmer writing deep-dive systems posts."
+description: "Software engineer and competitive programmer writing deep-dive systems posts."
 ---
 
-I'm a backend engineer and competitive programmer with a strong interest in systems and web3. This blog is where I share detailed articles -- about things I use or discover -- with a serious amount of depth.
+I'm a software engineer and competitive programmer with a strong interest in systems and web3. This blog is where I share detailed articles -- about things I use or discover -- with a serious amount of depth.
 
 I hope these words are useful to you, because that's the purpose. And don't hesitate to share your opinion back.
 

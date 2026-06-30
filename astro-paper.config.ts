@@ -4,7 +4,7 @@ export default defineAstroPaperConfig({
   site: {
     url: "https://blog.sabti.dev/",
     title: "SABTI Riad",
-    description: "Backend & systems engineering — mostly Linux internals, the parts under the syscall.",
+    description: "I write about internals, and my take on different topics",
     author: "SABTI RIad",
     profile: "https://blog.sabti.dev/",
     ogImage: "default-og.jpg",
@@ -32,7 +32,7 @@ export default defineAstroPaperConfig({
     { name: "github",   url: "https://github.com/RiadSab" },
     { name: "x",        url: "https://x.com/riad_sab" },
     { name: "linkedin", url: "https://www.linkedin.com/in/sabti-riad/" },
-    { name: "mail",     url: "mailto:sabtiriad@gmail.com" },
+    { name: "mail",     url: "mailto:riad@sabti.dev" },
   ],
   // shareLinks: [
   //   { name: "whatsapp", url: "https://wa.me/?text=" },
