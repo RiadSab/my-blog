@@ -5,11 +5,6 @@ pubDatetime: 2026-06-30T10:00:00Z
 slug: metacognitivity
 featured: false
 draft: false
-tags:
-  - AI
-  - software-engineering
-  - learning
-  - metacognition
 description: "That time of the month when I get skeptical about things, this time it landed on AI, the learning phase, and metacognition."
 ---
 

@@ -5,10 +5,6 @@ title: Who uses the CPU when you type `tail -f`?
 slug: who-uses-the-cpu-tail-f
 featured: false
 draft: false
-tags:
-  - linux
-  - kernel
-  - systems-programming
 description: "This post started with running tail -f in one terminal and echo >> in another, and finding a red anon_inode:inotify entry in /proc. It unpacks that discovery and answers the question: who actually does the work when you run tail -f?"
 ---
 
