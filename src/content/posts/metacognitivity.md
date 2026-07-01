@@ -1,5 +1,5 @@
 ---
-title: "AI Gives You Wings — Be Careful Not to Hit the Roof"
+title: "AI Gives You Wings, Be Careful Not to Hit the Roof"
 author: Riad Sabti
 pubDatetime: 2026-06-30T10:00:00Z
 slug: metacognitivity
@@ -45,7 +45,7 @@ Although it might seem weird, some individuals believe that copying manually (ty
 
 ## Maybe I can fly effect
 
-This one was bothering me personally these days — the metacognition issue. Do I judge
+This one was bothering me personally these days, the metacognition issue. Do I judge
 myself incorrectly and take for granted things I have not really acquired ? AI gives you space to do
 things and try what you have never seen, with confidence, but do you actually own
 that, or did you just instantly understand the object, tool, or code slot in the current
@@ -74,7 +74,7 @@ logic, and improvements. You just decide on Claude's behalf and let him do the r
 you may not even think anymore, and you may give up control to the LLM and just review code without any critical thinking. Claude's code
 is always clean (if you have even a minimal skill level). It was trained on the best code blocks written in decades, we may not be able 
 to write better than him, so it always sounds clever, even if that code doesn't serve the task at hand. If you can't see behind it, you 
-will eventually have big chunks of code that compile but give no added value; and to have that superpower to see gaps in it (compared to the actual logic — again, the code
+will eventually have big chunks of code that compile but give no added value; and to have that superpower to see gaps in it (compared to the actual logic, again, the code
 itself is not wrong), you hit an infinite loop: if you should review the code, you should have written code before, but if that "before" phase was also using AI, then
 how would you assist AI now ?
 
