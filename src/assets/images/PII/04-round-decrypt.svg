@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 746" width="680" role="img" aria-label="One FF1 decryption round in detail, using modular subtraction">
+<style>
+  text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .h { font-size: 14px; font-weight: 600; }
+  .s { font-size: 11.5px; }
+  .i rect, .i circle { fill: #eef0ff; stroke: #7c6ce8; stroke-width: 1.5; }
+  .i .h { fill: #5647c9; }  .i .s { fill: #8b83d4; }
+  .t rect, .t circle { fill: #e7f6f1; stroke: #3aa885; stroke-width: 1.5; }
+  .t .h { fill: #1f7a5c; }  .t .s { fill: #57a68c; }
+  .a rect, .a circle { fill: #fbeed9; stroke: #d09a3c; stroke-width: 1.5; }
+  .a .h { fill: #8f6a24; }  .a .s { fill: #b08c4d; }
+  .cap { font-size: 12px; fill: #6a6a8a; }
+  .grp { fill: none; stroke: #c9c9e0; stroke-width: 1.5; stroke-dasharray: 5 5; }
+  .wire { stroke: #6b6b7d; stroke-width: 1.5; fill: none; }
+  .head { fill: #6b6b7d; }
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path class="head" d="M0 0 L10 5 L0 10 z"/>
+  </marker>
+</defs>
+
+<g class="i">
+  <rect x="40" y="40" width="180" height="56" rx="10"/>
+  <text class="h" x="130" y="62" text-anchor="middle" dominant-baseline="middle">B = X[u &#8230; n)</text>
+  <text class="s" x="130" y="81" text-anchor="middle" dominant-baseline="middle">right half, v numerals</text>
+</g>
+
+<g class="i">
+  <rect x="420" y="40" width="170" height="56" rx="10"/>
+  <text class="h" x="505" y="62" text-anchor="middle" dominant-baseline="middle">A = X[0 &#8230; u)</text>
+  <text class="s" x="505" y="81" text-anchor="middle" dominant-baseline="middle">left half, u numerals</text>
+</g>
+
+<rect class="grp" x="240" y="118" width="350" height="343" rx="14"/>
+<text class="cap" x="256" y="140">round function F, round i = 9 &#8230; 0</text>
+
+<line class="wire" x1="505" y1="96" x2="505" y2="148" marker-end="url(#a)"/>
+
+<g class="t">
+  <rect x="256" y="150" width="318" height="56" rx="10"/>
+  <text class="h" x="415" y="172" text-anchor="middle" dominant-baseline="middle">Q = T &#8214; 0-pad &#8214; i &#8214; NUM(A)</text>
+  <text class="s" x="415" y="191" text-anchor="middle" dominant-baseline="middle">built from A, not B</text>
+</g>
+<line class="wire" x1="415" y1="206" x2="415" y2="224" marker-end="url(#a)"/>
+
+<g class="t">
+  <rect x="256" y="228" width="318" height="56" rx="10"/>
+  <text class="h" x="415" y="250" text-anchor="middle" dominant-baseline="middle">R = CBC-MAC(P &#8214; Q)</text>
+  <text class="s" x="415" y="269" text-anchor="middle" dominant-baseline="middle">same P block as encryption</text>
+</g>
+<line class="wire" x1="415" y1="284" x2="415" y2="302" marker-end="url(#a)"/>
+
+<g class="t">
+  <rect x="256" y="306" width="318" height="56" rx="10"/>
+  <text class="h" x="415" y="328" text-anchor="middle" dominant-baseline="middle">S = R &#8214; AES(R &#8853; 1) &#8214; &#8230;</text>
+  <text class="s" x="415" y="347" text-anchor="middle" dominant-baseline="middle">first d bytes, d = 4&#183;ceil(b/4) + 4</text>
+</g>
+<line class="wire" x1="415" y1="362" x2="415" y2="380" marker-end="url(#a)"/>
+
+<g class="t">
+  <rect x="256" y="384" width="318" height="56" rx="10"/>
+  <text class="h" x="415" y="406" text-anchor="middle" dominant-baseline="middle">y = NUM(S)</text>
+  <text class="s" x="415" y="425" text-anchor="middle" dominant-baseline="middle">identical to the encryption value</text>
+</g>
+
+<path class="wire" d="M415 440 L415 528 L388 528" marker-end="url(#a)"/>
+<line class="wire" x1="130" y1="96" x2="130" y2="486" marker-end="url(#a)"/>
+
+<g class="a">
+  <rect x="40" y="490" width="340" height="76" rx="10"/>
+  <text class="h" x="210" y="512" text-anchor="middle" dominant-baseline="middle">c = (NUM(B) &#8722; y) mod radix^m</text>
+  <text class="s" x="210" y="533" text-anchor="middle" dominant-baseline="middle">m = u if i is even, else v</text>
+  <text class="s" x="210" y="552" text-anchor="middle" dominant-baseline="middle">take the non-negative remainder</text>
+</g>
+<line class="wire" x1="210" y1="566" x2="210" y2="586" marker-end="url(#a)"/>
+
+<g class="a">
+  <rect x="40" y="590" width="340" height="56" rx="10"/>
+  <text class="h" x="210" y="612" text-anchor="middle" dominant-baseline="middle">C = STR(c) as m numerals</text>
+  <text class="s" x="210" y="631" text-anchor="middle" dominant-baseline="middle">zero-padded on the left</text>
+</g>
+<line class="wire" x1="210" y1="646" x2="210" y2="666" marker-end="url(#a)"/>
+
+<path class="wire" d="M590 68 L635 68 L635 698 L606 698" marker-end="url(#a)"/>
+
+<g class="i">
+  <rect x="120" y="670" width="180" height="56" rx="10"/>
+  <text class="h" x="210" y="692" text-anchor="middle" dominant-baseline="middle">A &#8592; C</text>
+  <text class="s" x="210" y="711" text-anchor="middle" dominant-baseline="middle">new left half</text>
+</g>
+
+<g class="i">
+  <rect x="420" y="670" width="180" height="56" rx="10"/>
+  <text class="h" x="510" y="692" text-anchor="middle" dominant-baseline="middle">B &#8592; A</text>
+  <text class="s" x="510" y="711" text-anchor="middle" dominant-baseline="middle">passed through unchanged</text>
+</g>
+</svg>
