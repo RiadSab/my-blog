@@ -18,7 +18,7 @@ If real PII is involved, that usually violates purpose limitation under GDPR. Th
 
 The obvious fix is to generate fake rows. I don't think that works, for three reasons: consistency, shape, and query behaviour, joins in particular.
 
-So I built this pseudonymization service to satisfy those constraints.
+So I built this pseudonymization service to satisfy those constraints. The code is on [GitHub](https://github.com/RiadSab/pii-pseudonymization).
 
 ## Big picture, inputs and outputs
 
@@ -81,6 +81,16 @@ A 16-byte header prepended to every round's PRF input. It encodes version, metho
 And one round, opened up:
 
 ![Inside one encryption round: Q is built from the tweak, the round number and B; R is the CBC-MAC of P concatenated with Q; S expands R to d bytes; y = NUM(S); c = (NUM(A) + y) mod radix^m becomes the new B while A takes the old B unchanged](@/assets/images/PII/03-round-encrypt.svg)
+
+Each round scrambles one half using the other, which is what we split the numerals in two for. The value doing the scrambling is `y`, and the whole round exists to produce it and add it to `A`.
+
+`y` has to be derived from `B`, never from `A`. `B` passes through the round untouched and becomes the next `A`, so at decryption time it is still sitting there in the clear and `y` can be recomputed.
+
+To get `y` we first need `Q`. The round encodes `B` into `b` bytes and appends that to the tweak and the round number `i`, with zero padding in between so the whole thing lands on a 16-byte boundary: `Q = T || 0-pad || i || NUM(B)`. The round number is in there so that every round is different. The tweak is in there so that the same value under the same key can produce different output, which is how `0612345678` and `0712345678` avoid encrypting to the same number.
+
+`P || Q` then goes through a CBC-MAC under AES, which produces a 16-byte `R`. If the round needs more than that, `R` is extended with `AES(R xor 1)`, `AES(R xor 2)`, and so on. The result is truncated to `d` bytes and read as a big-endian integer, and that is your `y`.
+
+The rest is arithmetic. `c = (NUM(A) + y) mod radix^m`, where `m` is `u` on even rounds and `v` on odd ones, `c` is written back out as `m` numerals to give `C`, and the halves swap: `B` becomes the new `A`, and `C` becomes the new `B`.
 
 ### But who the hell is Feistel
 
