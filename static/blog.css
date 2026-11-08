@@ -1,0 +1,345 @@
+/* Blog-only styles. Colors, fonts, nav, footer and the theme switch come
+   from style.css, which is a copy of riad.sabti.dev/style.css — when the
+   portfolio's style.css changes, copy it here again. */
+
+/* Recursive, pinned to Linear + Monospace. Code only. */
+@font-face {
+  font-family: "Recursive Mono";
+  src: url("/fonts/recursive-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --code-bg: #d8d7cf;
+  --font-code: "Recursive Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --code-bg: #2a201d;
+  }
+}
+:root[data-theme="dark"] {
+  --code-bg: #2a201d;
+}
+
+/* Home */
+.hero-small {
+  padding-top: 2.5rem;
+}
+.hero-small img {
+  width: 88px;
+  margin-bottom: 1rem;
+}
+
+.post-list {
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.post-list li + li {
+  margin-top: 1.5rem;
+}
+.post-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1.5rem;
+}
+.post-row a {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--text);
+}
+.post-row a:hover {
+  color: var(--link);
+}
+.post-row {
+  position: relative;
+}
+.post-when {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.post-row time {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+.post-list p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Post */
+.post-head {
+  padding-top: 3rem;
+}
+.post-head h1 {
+  font-size: clamp(1.9rem, 5.5vw, 2.4rem);
+  text-wrap: balance;
+}
+.post-meta {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-casual);
+  font-size: 0.9rem;
+}
+
+.toc {
+  margin-top: 2rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.toc summary {
+  cursor: pointer;
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+.toc ol {
+  margin: 0.5rem 0 0.25rem;
+  padding-left: 1.25rem;
+}
+.toc ol ol {
+  margin: 0.15rem 0 0.25rem;
+}
+.toc li {
+  margin: 0.15rem 0;
+}
+
+/* Post body */
+.prose {
+  margin-top: 2rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+.prose > * {
+  margin: 0;
+}
+.prose > * + * {
+  margin-top: 1.15em;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+.prose h3 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+.prose h4 {
+  font-size: 1.05rem;
+  margin-top: 1.5rem;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 1rem;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+.prose li + li {
+  margin-top: 0.3em;
+}
+.prose blockquote {
+  padding-left: 1rem;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin-block: 2.5rem;
+}
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 6px;
+}
+
+/* The SVG diagrams are drawn for a light background, so in dark mode
+   they sit on a light card. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .prose img[src$=".svg"] {
+    background: #ecebe5;
+    padding: 0.75rem;
+  }
+}
+:root[data-theme="dark"] .prose img[src$=".svg"] {
+  background: #ecebe5;
+  padding: 0.75rem;
+}
+
+/* Tables scroll sideways on narrow screens instead of breaking the page. */
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.prose th,
+.prose td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  font-weight: 600;
+  border-bottom-width: 2px;
+}
+
+/* Code */
+.prose code {
+  font-family: var(--font-code);
+  font-size: 0.86em;
+  white-space: normal;
+}
+.prose :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--code-bg);
+}
+.prose pre {
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  background: var(--code-bg);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.prose pre code {
+  white-space: pre;
+}
+/* Required by Zola's highlighter (giallo) for its line wrappers. */
+.giallo-l {
+  display: inline-block;
+  min-height: 1lh;
+  width: 100%;
+}
+.giallo-ln {
+  display: inline-block;
+  user-select: none;
+  margin-right: 0.4em;
+  padding: 0.4em;
+  min-width: 3ch;
+  text-align: right;
+  opacity: 0.8;
+}
+
+/* Bottom of a post */
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.post-nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.post-nav a:hover {
+  color: var(--link);
+}
+.post-nav a span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  font-family: var(--font-casual);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+.post-nav .older {
+  grid-column: 2;
+  text-align: right;
+}
+.back {
+  margin: 2rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* Handwritten side notes. Font and color come from .note in style.css.
+   They are generated by the templates (newest post, long posts, end of a
+   post, 404), so they stay accurate as posts are added. */
+.side-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+}
+.side-note svg {
+  width: 1.6rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.post-meta .side-note {
+  margin-left: 0.6rem;
+  vertical-align: middle;
+}
+/* On wide screens "fresh brew" moves out into the right margin. */
+@media (min-width: 62rem) {
+  .side-note-margin {
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: 0;
+  }
+}
+.refill {
+  margin-top: -0.4rem;
+}
+.refill .arrow-up {
+  width: 0.9rem;
+  height: 1.4rem;
+}
+.refill-older {
+  grid-column: 2;
+  justify-self: end;
+}
+.refill-newer {
+  grid-column: 1;
+  justify-self: start;
+}
+.note-drank {
+  width: fit-content;
+  margin: 0.2rem auto 0.4rem;
+  transform: translateX(4.5rem) rotate(-4deg);
+}
+
+@media (max-width: 34rem) {
+  .post-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+  .post-nav .older {
+    grid-column: 1;
+    text-align: left;
+  }
+  .refill-older {
+    grid-column: 1;
+    justify-self: start;
+  }
+}

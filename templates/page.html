@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="post">
+  <header class="post-head">
+    <h1>{{ page.title | markdown(inline=true) | safe }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%-d %b %Y") }}</time>
+      · {{ page.reading_time }} min read
+      {%- if page.reading_time >= 10 %}
+      <span class="note side-note">
+        <svg viewBox="0 0 32 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 13C23 17 13 16 5 7"/><path d="M5 7l0.5 6M5 7l6-0.5"/></svg>
+        grab a coffee first
+      </span>
+      {%- endif %}
+    </p>
+  </header>
+
+  {%- if page.extra.toc | default(value=false) and page.toc %}
+  <details class="toc">
+    <summary>Contents</summary>
+    <ol>
+      {%- for h in page.toc %}
+      <li>
+        <a href="{{ h.permalink | safe }}">{{ h.title }}</a>
+        {%- if h.children %}
+        <ol>
+          {%- for c in h.children %}
+          <li><a href="{{ c.permalink | safe }}">{{ c.title }}</a></li>
+          {%- endfor %}
+        </ol>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+  </details>
+  {%- endif %}
+
+  <div class="prose">
+    {{ page.content | safe }}
+  </div>
+</article>
+
+{#- With posts sorted by date, Zola's page.lower is the newer neighbour
+    and page.higher the older one. #}
+{%- if page.lower or page.higher %}
+<nav class="post-nav" aria-label="More posts">
+  {%- if page.lower %}
+  <a class="newer" href="{{ page.lower.permalink | safe }}">
+    <span>Newer</span>
+    {{ page.lower.title | markdown(inline=true) | safe }}
+  </a>
+  {%- endif %}
+  {%- if page.higher %}
+  <a class="older" href="{{ page.higher.permalink | safe }}">
+    <span>Older</span>
+    {{ page.higher.title | markdown(inline=true) | safe }}
+  </a>
+  {%- endif %}
+  <span class="note side-note refill {% if page.higher %}refill-older{% else %}refill-newer{% endif %}">
+    refill?
+    <svg class="arrow-up" viewBox="0 0 20 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30C6 22 13 12 10 3"/><path d="M10 3l-4.5 4.5M10 3l4.5 4"/></svg>
+  </span>
+</nav>
+{%- endif %}
+
+<p class="back"><a href="{{ get_url(path='/') | safe }}">← All posts</a></p>
+{% endblock content %}

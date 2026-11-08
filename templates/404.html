@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+  <picture>
+    <source srcset="{{ get_url(path='img/logo.webp') | safe }}" type="image/webp">
+    <img src="{{ get_url(path='img/logo.png') | safe }}" width="256" height="258" alt="">
+  </picture>
+  <h1>This cup is empty</h1>
+  <p class="note note-drank">someone drank it</p>
+  <p class="tagline">There's nothing at this address.</p>
+  <p class="more"><a href="{{ get_url(path='/') | safe }}">See all posts</a></p>
+</div>
+{% endblock content %}

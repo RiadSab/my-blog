@@ -1,0 +1,38 @@
+{
+  "name": "coffee-light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#d8d7cf",
+    "editor.foreground": "#262625"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#5f5c50", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["keyword", "keyword.control", "storage", "storage.type", "storage.modifier", "meta.preprocessor", "keyword.control.directive", "punctuation.definition.directive"],
+      "settings": { "foreground": "#6f3b1c" }
+    },
+    {
+      "scope": ["string", "string.quoted", "punctuation.definition.string", "meta.preprocessor.include string"],
+      "settings": { "foreground": "#4d5a24" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language", "constant.character", "constant.other", "support.constant"],
+      "settings": { "foreground": "#8a4b12" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function", "meta.function-call entity.name.function", "entity.name.command", "support.function.builtin.shell"],
+      "settings": { "foreground": "#245a6b" }
+    },
+    {
+      "scope": ["entity.name.type", "support.type", "storage.type.built-in", "entity.name.struct"],
+      "settings": { "foreground": "#6f3b1c" }
+    },
+    {
+      "scope": ["variable.other.normal.shell", "variable.other.special.shell", "variable.other.positional.shell", "punctuation.definition.variable.shell"],
+      "settings": { "foreground": "#8a4b12" }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# Zola config for blog.sabti.dev — https://www.getzola.org/documentation/
+base_url = "https://blog.sabti.dev"
+title = "Writing · Riad Sabti"
+description = "I write about internals, and my take on different topics."
+default_language = "en"
+author = "Riad Sabti"
+
+compile_sass = false
+build_search_index = false
+generate_sitemap = true
+generate_robots_txt = true
+
+# No RSS feed. To bring one back, set this to true and add
+# feed_filenames = ["rss.xml"] (the old blog's feed address).
+generate_feeds = false
+
+[markdown]
+lazy_async_image = true
+
+# Class-based highlighting, so code colors follow the light/dark switch.
+# Zola writes giallo-light.css and giallo-dark.css; base.html loads them.
+[markdown.highlighting]
+style = "class"
+light_theme = "coffee-light"
+dark_theme = "coffee-dark"
+extra_themes = ["highlight/coffee-light.json", "highlight/coffee-dark.json"]
+error_on_missing_language = true
+add_color_scheme = false
+
+[extra]
+portfolio = "https://riad.sabti.dev/"

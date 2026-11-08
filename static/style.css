@@ -1,0 +1,398 @@
+/* Fonts: self-hosted, Latin subset, WOFF2. Licenses in /fonts. */
+@font-face {
+  font-family: "Caudex";
+  src: url("/fonts/caudex-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caudex";
+  src: url("/fonts/caudex-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/fonts/bricolage.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Handwritten margin notes only. */
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* Recursive, pinned to Casual + Monospace. Tagline only. */
+@font-face {
+  font-family: "Recursive Casual";
+  src: url("/fonts/recursive-casual.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Palette: based on ristretto.group (mdBook "Rust" theme).
+   Light mode uses a light nav band and dark-brown links; muted text is
+   darkened from the original #737480 so small text passes WCAG AA. */
+:root {
+  color-scheme: light;
+
+  --page: #e1e1db;
+  --text: #262625;
+  --muted: #5f606b;
+  --link: #6f3b1c;
+  --rule: #cfcec5;
+  --band: #d3d2c8;
+  --band-border: #c4c3b8;
+  --band-text: #3b2e2a;
+  --band-active: #6f3b1c;
+
+  --font-body: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-title: "Caudex", Georgia, serif;
+  --font-note: "Caveat", "Segoe Print", cursive;
+  --font-casual: "Recursive Casual", ui-monospace, monospace;
+
+  --measure: 40rem;
+  --gutter: 1.25rem;
+}
+
+/* Dark: the original theme has none, so this one is built from its own
+   colors — the sidebar brown becomes the page, the orange becomes links.
+   It applies when the visitor's system is dark (unless they switched to
+   light), or when they switched to dark. The two blocks must match. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #3b2e2a;
+    --text: #e1e1db;
+    --muted: #b3a497;
+    --link: #e69f67;
+    --rule: #574743;
+    --band: #2a201d;
+    --band-border: #2a201d;
+    --band-text: #c8c9db;
+    --band-active: #e69f67;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #3b2e2a;
+  --text: #e1e1db;
+  --muted: #b3a497;
+  --link: #e69f67;
+  --rule: #574743;
+  --band: #2a201d;
+  --band-border: #2a201d;
+  --band-text: #c8c9db;
+  --band-active: #e69f67;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 2px dashed var(--link);
+  outline-offset: 2px;
+}
+
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+.skip:focus {
+  left: var(--gutter);
+  top: 0.5rem;
+  z-index: 1;
+  background: var(--page);
+  padding: 0.25rem 0.5rem;
+}
+
+/* Nav band (the mdBook sidebar, turned sideways) */
+.band {
+  background: var(--band);
+  border-bottom: 1px solid var(--band-border);
+}
+.band nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.8rem;
+  font-size: 0.95rem;
+}
+.band a {
+  color: var(--band-text);
+  text-decoration: none;
+}
+.band a:hover,
+.band a[aria-current="page"] {
+  color: var(--band-active);
+}
+.band a:focus-visible,
+.theme-toggle:focus-visible {
+  outline-color: var(--band-active);
+}
+
+/* Light/dark switch: hidden without JavaScript (the page then simply
+   follows the system theme). Shows a moon in light mode, a sun in dark. */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.25rem -0.4rem -0.25rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--band-text);
+  cursor: pointer;
+}
+.js .theme-toggle {
+  display: inline-flex;
+}
+.theme-toggle:hover {
+  color: var(--band-active);
+}
+.theme-toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.icon-sun {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .icon-moon {
+    display: none;
+  }
+}
+:root[data-theme="dark"] .icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: none;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding-block: 3rem 0.5rem;
+}
+.hero img {
+  display: block;
+  width: 128px;
+  height: auto;
+  margin: 0 auto 1.25rem;
+}
+.hero h1 {
+  font-size: clamp(2.25rem, 7vw, 2.85rem);
+  letter-spacing: -0.01em;
+}
+.tagline {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-casual);
+  font-size: 0.95rem;
+  text-wrap: balance;
+}
+
+/* Handwritten notes, like a barista's marker on a cup. Keep them few. */
+.note {
+  font-family: var(--font-note);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--link);
+}
+/* Up and to the left of the name. Positioned out of the flow so it
+   doesn't push the name away from the logo. */
+.name {
+  position: relative;
+}
+.note-hi {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.35rem);
+  margin: 0;
+  white-space: nowrap;
+  transform: translateX(calc(-50% - 7.5rem)) rotate(-8deg);
+}
+/* Pushed to the far right of the project title row, dropped a little. */
+.note-aside {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-left: auto;
+  font-size: 1.35rem;
+  white-space: nowrap;
+  transform: translateY(0.7rem) rotate(-4deg);
+}
+.note-aside svg {
+  width: 1.7rem;
+  height: 1.1rem;
+}
+
+.intro {
+  margin: 2.5rem 0 0;
+}
+
+/* Sections */
+section {
+  margin-top: 3rem;
+}
+section > h2 {
+  font-size: 1.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.25rem;
+}
+
+.project + .project {
+  margin-top: 1.75rem;
+}
+.project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.75rem;
+}
+.project h3 {
+  font-size: 1.2rem;
+}
+.project h3 a {
+  text-decoration: none;
+  color: var(--text);
+}
+.project h3 a:hover {
+  color: var(--link);
+}
+.meta {
+  margin: 0.15rem 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.project p {
+  margin: 0;
+}
+.links {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  font-size: 0.95rem;
+}
+
+.posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.posts li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.35rem;
+}
+.posts time {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+.more {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+  margin-top: 4rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+footer > div {
+  padding-block: 1.5rem 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+footer p {
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 34rem) {
+  .band nav {
+    justify-content: center;
+  }
+  .hero {
+    padding-top: 2.25rem;
+  }
+  /* The meta line fills the width on phones, so keep the note on the
+     title line instead of dropping it onto the meta text. */
+  .note-aside {
+    transform: rotate(-4deg);
+  }
+  .posts li {
+    flex-direction: column;
+    gap: 0;
+  }
+}
