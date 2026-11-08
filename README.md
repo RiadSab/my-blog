@@ -41,9 +41,13 @@ zola check      # also checks every link
 
 ## Deploy (Cloudflare Pages)
 
-- Build command: `zola build`
+- Build command: `sh build.sh`
 - Output directory: `public`
-- Environment variable: `ZOLA_VERSION` = `0.23.6`
+
+`build.sh` downloads the Zola version pinned inside it and builds the site.
+Cloudflare's own Zola is older and builds this site wrong, so don't use
+plain `zola build` there. To upgrade Zola, change `ZOLA_VERSION` in
+`build.sh` and install the same version locally.
 
 `static/_redirects` sends the old Astro pages (`/about/`, `/archives/`,
 `/search/`, `/tags/…`) to their new homes.

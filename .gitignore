@@ -1,5 +1,6 @@
-# Zola output
+# Zola output, and the binary build.sh downloads on Cloudflare
 public/
+/zola
 
 # Personal files kept next to the blog, not part of it
 output/
