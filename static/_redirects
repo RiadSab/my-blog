@@ -1,7 +1,7 @@
 # Cloudflare Pages redirects for pages the old Astro blog had.
 # Posts keep their URLs (/posts/<slug>/) and need no redirect.
-/about              https://riad.sabti.dev/  301
-/about/             https://riad.sabti.dev/  301
+/about              https://sabti.dev/  301
+/about/             https://sabti.dev/  301
 /posts              /  301
 /posts/             /  301
 /archives           /  301

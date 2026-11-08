@@ -1,7 +1,7 @@
 # blog.sabti.dev
 
 Riad Sabti's blog. Built with [Zola](https://www.getzola.org/) (a single
-program, no npm) and styled to match [riad.sabti.dev](https://riad.sabti.dev/).
+program, no npm) and styled to match [sabti.dev](https://sabti.dev/).
 
 ## Write a post
 
